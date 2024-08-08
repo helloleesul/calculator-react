@@ -1,10 +1,13 @@
-import { Calculator } from "./components/Calculator";
+import Calculator from "./components/Calculator";
+import ToastProvider from "./contexts/ToastProvider";
 
 function App() {
   return (
-    <main>
-      <Calculator />
-    </main>
+    <ToastProvider>
+      <main>
+        <Calculator />
+      </main>
+    </ToastProvider>
   );
 }
 
