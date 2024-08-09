@@ -2,12 +2,20 @@ import { createContext, useState } from "react";
 import Toast from "../components/Toast";
 import { createPortal } from "react-dom";
 
-export const ToastContext = createContext();
+type ToastProviderType = {
+  toasts: string[];
+  addToast: (value: string) => void;
+};
 
-const ToastProvider = ({ children }) => {
-  const [toasts, setToasts] = useState([]);
+export const ToastContext = createContext<ToastProviderType>({
+  toasts: [],
+  addToast: () => {},
+});
 
-  const addToast = (message) => {
+const ToastProvider = ({ children }: { children: React.ReactNode }) => {
+  const [toasts, setToasts] = useState<string[]>([]);
+
+  const addToast = (message: string) => {
     setToasts((prev) => [...prev, message]);
 
     setTimeout(() => {
