@@ -31,7 +31,7 @@ export default function useCalculator() {
 
     if (isNaN(resultValue)) {
       addToast(resultValue);
-      onAllClean();
+      // onAllClean();
     } else {
       setInput(resultValue);
     }
